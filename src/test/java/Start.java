@@ -27,17 +27,15 @@ public class Start {
             DesiredCapabilities capabilities = new DesiredCapabilities();
 
             ClassLoader classLoader = new Start().getClass().getClassLoader();
-            //if resource is null, intellij settings --> compiler --> resource patterns "!?*.apk" add
             File file = new File(classLoader.getResource("sahibinden_ios.ipa").getFile());
             String absolutePath = file.getAbsolutePath();
 
-            //capabilities.setCapability(MobileCapabilityType.APP, absolutePath);
-            //capabilities.setCapability(MobileCapabilityType.UDID, "00008020-000125660279002E");
+            capabilities.setCapability(MobileCapabilityType.APP, absolutePath);
+            capabilities.setCapability(MobileCapabilityType.UDID, "c982d5dc9436a8dc176843de8f7cea4001bc9cfa");
             capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, AutomationName.IOS_XCUI_TEST);
             capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, Platform.IOS);
             capabilities.setCapability("autoGrantPermissions", true);
-            //capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Xs");
-            //capabilities.setCapability(MobileCapabilityType);
+            capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Xs");
             capabilities.setCapability("appPushTimeout", 60000);
 
             int port =  Integer.valueOf(System.getProperty("roboticPort", "4723"));
